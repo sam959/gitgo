@@ -1,9 +1,13 @@
+# Profile
+.macos/Runner/
+const.dart
 # Miscellaneous
 *.class
 *.log
 *.pyc
 *.swp
 *.metadata
+*.env
 .DS_Store
 .atom/
 .buildlog/
@@ -23,6 +27,7 @@
 
 # Flutter/Dart/Pub related
 **/doc/api/
+**/macos/**
 **/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins

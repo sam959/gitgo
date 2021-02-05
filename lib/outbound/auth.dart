@@ -23,11 +23,12 @@ Uri.parse('https://github.com/login/oauth/authorize');
 final _tokenEndpoint = Uri.parse('https://github.com/login/oauth/access_token');
 
 class GithubLoginWidget extends StatefulWidget {
-  const GithubLoginWidget({
+
+   const GithubLoginWidget({
     @required this.builder,
     @required this.githubClientId,
     @required this.githubClientSecret,
-    @required this.githubScopes,
+    @required this.githubScopes, print(gitHubClientId)
   });
   final AuthenticatedBuilder builder;
   final String githubClientId;
