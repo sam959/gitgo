@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             body: Center(
               child: Text(
-                'You are logged in to GitHub!',
+                'You are logged into GitHub!',
               ),
             ),
           );
