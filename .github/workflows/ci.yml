@@ -22,7 +22,7 @@ jobs:
         with:
           flutter-version: '1.26.0-17.2.pre'
           channel: dev
-      - run: flutter test
+      - run: flutter test --no-sound-null-safety
 
       - name : Clean merged branches
         run: |
