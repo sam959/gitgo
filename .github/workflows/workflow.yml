@@ -27,3 +27,4 @@ jobs:
           VALIDATE_BASH: false
           VALIDATE_JSCPD: false
           VALIDATE_XML: false
+          VALIDATE_RUBY: false
