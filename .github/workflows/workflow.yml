@@ -27,13 +27,5 @@ jobs:
           VALIDATE_BASH: false
           VALIDATE_JSCPD: false
           VALIDATE_XML: false
-
-      - name : Unit test
-          run: |
-            flutter test
-
-      - name : Clean merged branches
-          run: |
-            git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done
-            echo "Finished cleaning"
-        
+          VALIDATE_RUBY: false
+          VALIDATE_DART: false
