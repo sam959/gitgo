@@ -1,0 +1,1 @@
+flutter run -t lib/inbound/entrypoint/dev/dev_run.dart -d macos

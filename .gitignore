@@ -1,6 +1,5 @@
 # Profile
-.macos/Runner/
-const.dart
+**/config/dev.json
 # Miscellaneous
 *.class
 *.log

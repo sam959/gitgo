@@ -7,21 +7,30 @@ jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
   ci:
-    # Name the Job
-    name: ci
-    # Set the type of machine to run on
-    runs-on: ubuntu-latest
+
+    env:
+      DEV_JSON : ${{ secrets.DEV_JSON }}
+
+    runs-on: macos-latest
 
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
+
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Write dev.json
+        run: |
+          touch assets/config/dev.json
+          echo $DEV_JSON >> assets/config/dev.json
+          cat  assets/config/dev.json
 
       - name: Flutter test
         uses: subosito/flutter-action@v1.4.0
         with:
           flutter-version: '1.26.0-17.2.pre'
           channel: dev
+      - run: flutter pub get
+      - run: flutter  analyze
       - run: flutter test --no-sound-null-safety
 
       - name : Clean merged branches

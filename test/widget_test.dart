@@ -6,12 +6,15 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gitgo/inbound/configuration/environment_config.dart';
 import 'package:gitgo/main.dart';
 
 void main() {
   testWidgets('Smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+
+    var env = await EnvironmentConfig.forEnvironment('dev');
+    await tester.pumpWidget(MyApp(env));
 
     // Verify that our counter starts at 0.
     expect(find.text('Log into Github'), findsOneWidget);
