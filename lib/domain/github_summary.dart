@@ -17,16 +17,18 @@ import 'package:url_launcher/url_launcher.dart';
 class GitHubSummary extends StatefulWidget {
   GitHubSummary({@required http.Client client})
       : _link = HttpLink(
-    'https://api.github.com/graphql',
-    httpClient: client,
-  );
+          'https://api.github.com/graphql',
+          httpClient: client,
+        );
   final HttpLink _link;
+
   @override
   _GitHubSummaryState createState() => _GitHubSummaryState();
 }
 
 class _GitHubSummaryState extends State<GitHubSummary> {
   int _selectedIndex = 0;
+  int _sub_selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +44,12 @@ class _GitHubSummaryState extends State<GitHubSummary> {
           labelType: NavigationRailLabelType.selected,
           destinations: [
             NavigationRailDestination(
-              icon: Icon(Octicons.repo),
-              label: Text('Repositories'),
-            ),
-            NavigationRailDestination(
-              icon: Icon(Octicons.issue_opened),
-              label: Text('Assigned Issues'),
-            ),
-            NavigationRailDestination(
               icon: Icon(Octicons.git_pull_request),
               label: Text('Pull Requests'),
+            ),
+            NavigationRailDestination(
+              icon: Icon(Octicons.git_merge),
+              label: Text('Repositories'),
             ),
           ],
         ),
@@ -74,7 +72,9 @@ class _GitHubSummaryState extends State<GitHubSummary> {
 
 class RepositoriesList extends StatefulWidget {
   const RepositoriesList({@required this.link});
+
   final Link link;
+
   @override
   _RepositoriesListState createState() => _RepositoriesListState(link: link);
 }
@@ -83,6 +83,7 @@ class _RepositoriesListState extends State<RepositoriesList> {
   _RepositoriesListState({@required Link link}) {
     _repositories = _retreiveRespositories(link);
   }
+
   Future<List<$Repositories$viewer$repositories$nodes>> _repositories;
 
   Future<List<$Repositories$viewer$repositories$nodes>> _retreiveRespositories(
@@ -124,7 +125,9 @@ class _RepositoriesListState extends State<RepositoriesList> {
 
 class AssignedIssuesList extends StatefulWidget {
   const AssignedIssuesList({@required this.link});
+
   final Link link;
+
   @override
   _AssignedIssuesListState createState() =>
       _AssignedIssuesListState(link: link);
@@ -138,7 +141,7 @@ class _AssignedIssuesListState extends State<AssignedIssuesList> {
   Future<List<$AssignedIssues$search$edges$node$asIssue>> _assignedIssues;
 
   Future<List<$AssignedIssues$search$edges$node$asIssue>>
-  _retrieveAssignedIssues(Link link) async {
+      _retrieveAssignedIssues(Link link) async {
     var result = await link.request(ViewerDetail((b) => b)).first;
     if (result.errors != null && result.errors.isNotEmpty) {
       throw QueryException(result.errors);
@@ -147,8 +150,8 @@ class _AssignedIssuesListState extends State<AssignedIssuesList> {
 
     result = await link
         .request(AssignedIssues((b) => b
-      ..count = 100
-      ..query = 'is:open assignee:${_viewer.login} archived:false'))
+          ..count = 100
+          ..query = 'is:open assignee:${_viewer.login} archived:false'))
         .first;
     if (result.errors != null && result.errors.isNotEmpty) {
       throw QueryException(result.errors);
@@ -193,7 +196,9 @@ class _AssignedIssuesListState extends State<AssignedIssuesList> {
 
 class PullRequestsList extends StatefulWidget {
   const PullRequestsList({@required this.link});
+
   final Link link;
+
   @override
   _PullRequestsListState createState() => _PullRequestsListState(link: link);
 }
@@ -202,10 +207,11 @@ class _PullRequestsListState extends State<PullRequestsList> {
   _PullRequestsListState({@required Link link}) {
     _pullRequests = _retrievePullRequests(link);
   }
+
   Future<List<$PullRequests$viewer$pullRequests$edges$node>> _pullRequests;
 
   Future<List<$PullRequests$viewer$pullRequests$edges$node>>
-  _retrievePullRequests(Link link) async {
+      _retrievePullRequests(Link link) async {
     var result = await link.request(PullRequests((b) => b..count = 100)).first;
     if (result.errors != null && result.errors.isNotEmpty) {
       throw QueryException(result.errors);
@@ -251,7 +257,9 @@ class _PullRequestsListState extends State<PullRequestsList> {
 
 class QueryException implements Exception {
   QueryException(this.errors);
+
   List<GraphQLError> errors;
+
   @override
   String toString() {
     return 'Query Exception: ${errors.map((err) => '$err').join(',')}';
