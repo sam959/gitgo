@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 0.1.0+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -27,10 +27,16 @@ dependencies:
   oauth2: ^1.6.1
   url_launcher: ^5.4.10
   flutter_config: ^1.0.8
-  gql: ^0.12.3               # Add from here,
-  gql_exec: ^0.2.4           #
-  gql_link: ^0.3.0           #
-  gql_http_link: ^0.3.2      # to here.
+  gql_transform_link: ^0.1.5
+  gql: ^0.12.3
+  gql_exec: ^0.2.4
+  gql_link: ^0.3.0
+  gql_http_link: ^0.3.2
+  flutter_icons: ^1.1.0
+  window_to_front:
+    git:
+      url: git://github.com/sam959/window_to_front.git
+      ref: main
 
 
 
@@ -42,8 +48,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.11.1     # And these two,
-  gql_build: ^0.0.11         # as well.
+  build_runner: ^1.11.1
+  gql_build: ^0.0.11
   pedantic: ^1.9.0
 
 # For information on the generic Dart part of this file, see the

@@ -1,0 +1,34 @@
+query PullRequests($count: Int!) {
+    viewer {
+        pullRequests(
+            first: $count
+            orderBy: { field: CREATED_AT, direction: DESC }
+        ) {
+            edges {
+                node {
+                    repository {
+                        nameWithOwner
+                        url
+                    }
+                    author {
+                        login
+                        url
+                    }
+                    number
+                    url
+                    title
+                    updatedAt
+                    url
+                    state
+                    isDraft
+                    comments {
+                        totalCount
+                    }
+                    files {
+                        totalCount
+                    }
+                }
+            }
+        }
+    }
+}

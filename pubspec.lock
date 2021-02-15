@@ -202,6 +202,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
+  flutter_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -261,6 +268,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.1"
+  gql_transform_link:
+    dependency: "direct main"
+    description:
+      name: gql_transform_link
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
   graphs:
     dependency: transitive
     description:
@@ -316,7 +330,7 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.1"
+    version: "4.0.0"
   logging:
     dependency: transitive
     description:
@@ -567,6 +581,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  window_to_front:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: f7fc86e8856880b49fe98f6557fa7e944a1e2615
+      url: "git://github.com/sam959/window_to_front.git"
+    source: git
+    version: "0.0.1"
   yaml:
     dependency: transitive
     description:

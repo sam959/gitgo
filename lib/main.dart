@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gitgo/inbound/configuration/config_environment_widget.dart';
+import 'package:gitgo/outbound/api/viewer.data.gql.dart';
 import 'package:gitgo/outbound/api/viewer.req.gql.dart';
+import 'package:gitgo/outbound/auth/auth.dart';
 import 'package:gql_exec/gql_exec.dart';
 import 'package:gql_link/gql_link.dart';
-import 'package:gitgo/outbound/api/viewer.data.gql.dart';
-import 'package:gitgo/outbound/auth.dart';
-import 'package:gql_http_link/gql_http_link.dart';
+import 'package:window_to_front/window_to_front.dart';
+
+import 'domain/github_summary.dart';
 import 'inbound/configuration/environment_config.dart';
 
 Future main(String env) async {
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'GitGo Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: EnvironmentConfigWidget(
           config: config, child: MyHomePage(title: 'GitGo Demo Home Page')),
@@ -52,27 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return GithubLoginWidget(
-        builder: (context, httpClient) {
-          final link = HttpLink(
-            'https://api.github.com/graphql',
-            httpClient: httpClient,
-          );
-          return FutureBuilder<$ViewerDetail$viewer>(
-            future: viewerDetail(link),
-            builder: (context, snapshot) {
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text(title),
-                ),
-                body: Center(
-                  child: Text(
-                    snapshot.hasData
-                        ? 'Hello ${snapshot.data?.login}!'
-                        : 'Retrieving viewer login details...',
-                  ),
-                ),
-              );
-            },
+        builder: (context, client) {
+          WindowToFront.activate();
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(title),
+            ),
+            body: GitHubSummary(client: client),
           );
         },
         githubClientId: EnvironmentConfigWidget.of(context)

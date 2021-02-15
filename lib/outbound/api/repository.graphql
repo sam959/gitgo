@@ -1,0 +1,26 @@
+query Repositories($count: Int!) {
+    viewer {
+        repositories(
+            first: $count
+            orderBy: { field: UPDATED_AT, direction: DESC }
+        ) {
+            nodes {
+                name
+                description
+                isFork
+                isPrivate
+                stargazers {
+                    totalCount
+                }
+                url
+                issues {
+                    totalCount
+                }
+                owner {
+                    login
+                    avatarUrl
+                }
+            }
+        }
+    }
+}
