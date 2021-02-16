@@ -1,12 +1,20 @@
 part of '../bloc/login_bloc.dart';
 
 @immutable
-abstract class LoginState {
-  final LoginStatus loginStatus;
-  const LoginState(this.loginStatus);
-}
+class LoginState extends Equatable {
+  final AuthenticationStatus authenticationStatus;
 
-class LoginInitial extends LoginState {
-  const LoginInitial(LoginStatus loginStatus) : super(loginStatus);
+  const LoginState._(
+      {this.authenticationStatus = AuthenticationStatus.unknown});
 
+  const LoginState.unknown() : this._();
+
+  const LoginState.loggedIn()
+      : this._(authenticationStatus: AuthenticationStatus.logged_in);
+
+  const LoginState.loggedOut()
+      : this._(authenticationStatus: AuthenticationStatus.logged_out);
+
+  @override
+  List<Object> get props => [authenticationStatus];
 }
