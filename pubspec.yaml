@@ -33,12 +33,12 @@ dependencies:
   gql_link: ^0.3.0
   gql_http_link: ^0.3.2
   flutter_icons: ^1.1.0
+  flutter_bloc: ^6.0.0
+  equatable: ^1.0.0
   window_to_front:
     git:
       url: git://github.com/sam959/window_to_front.git
       ref: main
-
-
 
 
   # The following adds the Cupertino Icons font to your application.

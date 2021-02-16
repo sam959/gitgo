@@ -1,1 +1,1 @@
-flutter run -t lib/inbound/entrypoint/dev/dev_run.dart -d macos
+flutter run -t lib/src/inbound/entrypoint/dev/dev_run.dart -d macos
