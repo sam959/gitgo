@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:gitgo/inbound/configuration/environment_config.dart';
+import 'package:gitgo/src/inbound/configuration/environment_config.dart';
 
 class EnvironmentConfigWidget extends InheritedWidget {
   final EnvironmentConfig config;

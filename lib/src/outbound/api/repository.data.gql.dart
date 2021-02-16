@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'package:gitgo/third_party/github_graphql_schema/schema.docs.schema.gql.dart'
+import 'package:gitgo/src/third_party/github_graphql_schema/schema.docs.schema.gql.dart'
     as _i1;
 
 class $Repositories {

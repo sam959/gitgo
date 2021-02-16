@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gitgo/inbound/configuration/config_environment_widget.dart';
-import 'package:gitgo/outbound/api/viewer.data.gql.dart';
-import 'package:gitgo/outbound/api/viewer.req.gql.dart';
-import 'package:gitgo/outbound/auth/auth.dart';
+import 'package:gitgo/src/inbound/configuration/config_environment_widget.dart';
+import 'package:gitgo/src/outbound/api/viewer.data.gql.dart';
+import 'package:gitgo/src/outbound/api/viewer.req.gql.dart';
+import 'package:gitgo/src/outbound/auth/auth.dart';
 import 'package:gql_exec/gql_exec.dart';
 import 'package:gql_link/gql_link.dart';
 import 'package:window_to_front/window_to_front.dart';
 
-import 'domain/github_summary.dart';
-import 'inbound/configuration/environment_config.dart';
+import '../src/domain/github_summary.dart';
+import '../src/inbound/configuration/environment_config.dart';
 
 Future main(String env) async {
   WidgetsFlutterBinding.ensureInitialized();
