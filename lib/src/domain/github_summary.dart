@@ -28,7 +28,6 @@ class GitHubSummary extends StatefulWidget {
 
 class _GitHubSummaryState extends State<GitHubSummary> {
   int _selectedIndex = 0;
-  int _sub_selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +43,16 @@ class _GitHubSummaryState extends State<GitHubSummary> {
           labelType: NavigationRailLabelType.selected,
           destinations: [
             NavigationRailDestination(
-              icon: Icon(Octicons.git_pull_request),
-              label: Text('Pull Requests'),
+              icon: Icon(Octicons.repo),
+              label: Text('Repositories'),
             ),
             NavigationRailDestination(
-              icon: Icon(Octicons.git_merge),
-              label: Text('Repositories'),
+              icon: Icon(Octicons.issue_opened),
+              label: Text('Assigned Issues'),
+            ),
+            NavigationRailDestination(
+              icon: Icon(Octicons.git_pull_request),
+              label: Text('Pull Requests'),
             ),
           ],
         ),
