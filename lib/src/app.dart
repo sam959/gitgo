@@ -26,17 +26,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: EnvironmentConfigWidget(
-          config: config, child: MyHomePage(title: 'Welcome to GitGo')),
+      home: EnvironmentConfigWidget(config: config, child: MyHomePage()),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState(title: "GitGo Dashboard");
 }

@@ -53,21 +53,30 @@ class _GithubLoginState extends State<GithubLoginWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Github Login'),
+        title: const Text('Login'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            await _redirectServer?.close();
-            // Bind to an ephemeral port on localhost
-            _redirectServer = await HttpServer.bind('localhost', 0);
-            var authenticatedHttpClient = await _getOAuth2Client(
-                Uri.parse('http://localhost:${_redirectServer?.port}/auth'));
-            setState(() {
-              _client = authenticatedHttpClient;
-            });
-          },
-          child: const Text('Log into Github'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Log into your Github account'),
+            SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await _redirectServer?.close();
+                // Bind to an ephemeral port on localhost
+                _redirectServer = await HttpServer.bind('localhost', 0);
+                var authenticatedHttpClient = await _getOAuth2Client(Uri.parse(
+                    'http://localhost:${_redirectServer?.port}/auth'));
+                setState(() {
+                  _client = authenticatedHttpClient;
+                });
+              },
+              child: const Text('Login'),
+            ),
+          ],
         ),
       ),
     );
@@ -76,8 +85,7 @@ class _GithubLoginState extends State<GithubLoginWidget> {
   Future<oauth2.Client> _getOAuth2Client(Uri redirectUrl) async {
     if (widget.githubClientId.isEmpty || widget.githubClientSecret.isEmpty) {
       throw const GithubLoginException(
-          'githubClientId and githubClientSecret must be not empty. '
-          'See `lib/github_oauth_credentials.dart` for more detail.');
+          'githubClientId and githubClientSecret must be not empty. ');
     }
     var grant = oauth2.AuthorizationCodeGrant(
       widget.githubClientId,
