@@ -19,7 +19,7 @@ void main() {
         config: env, authenticationRepository: AuthenticationRepository()));
 
     // Verify that our counter starts at 0.
-    expect(find.text('Log into Github'), findsOneWidget);
+    expect(find.text('Log into your Github account'), findsOneWidget);
     expect(find.text('1'), findsNothing);
   });
 }
